@@ -31,17 +31,19 @@ and policies use `TO anon, authenticated`.
   - `prompt_key` (text)
   - `answer_text` (text)
   - `created_at` (timestamptz, default now())
-- `takehome_assignments` — stores the three take-home images and iteration notes.
+- `takehome_assignments` — stores the five take-home challenge submissions and iteration notes.
   - `id` (uuid, primary key)
-  - `image_number` (int)  -- 1, 2, or 3
-  - `category` (text)    -- 'realistic', 'fantasy', 'original'
-  - `first_idea` (text)
+  - `image_number` (int)  -- 1 through 5
+  - `category` (text)    -- challenge name
+  - `vague_prompt` (text)
   - `initial_prompt` (text)
   - `image_url` (text)
   - `ai_did_well` (text)
   - `ai_got_wrong` (text)
   - `revised_prompt` (text)
   - `improved_image_url` (text)
+  - `comparison` (text)
+  - `reflection` (text)
   - `created_at` (timestamptz, default now())
 
 2. Security
@@ -151,13 +153,15 @@ CREATE TABLE IF NOT EXISTS takehome_assignments (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   image_number int NOT NULL,
   category text NOT NULL,
-  first_idea text,
+  vague_prompt text,
   initial_prompt text,
   image_url text,
   ai_did_well text,
   ai_got_wrong text,
   revised_prompt text,
   improved_image_url text,
+  comparison text,
+  reflection text,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 

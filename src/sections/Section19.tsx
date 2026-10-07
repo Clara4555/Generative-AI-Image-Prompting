@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Brain, Lightbulb, NotebookPen, ArrowRight, Sparkles, Upload, Repeat } from 'lucide-react';
+import { Brain, Lightbulb, NotebookPen, ArrowRight, Sparkles, Upload } from 'lucide-react';
 import { NotePad, ImageUploadField } from '@/components/NotePad';
 import { TeacherGuidance } from '@/components/TeacherGuidance';
 import { PipelineDiagram } from '@/components/Diagrams';
@@ -33,28 +33,28 @@ const assignmentCategories = [
     num: 1,
     title: 'Realistic Image',
     desc: 'A dog at the beach.',
-    example: 'Include the dog, beach setting, action, time of day, mood, framing, and any clothing or accessories.',
+    example: 'Consider the dog, action, beach, time of day, clothing, mood, and framing.',
     color: 'cyan',
   },
   {
     num: 2,
     title: 'Science Fiction',
     desc: 'A robot in a city.',
-    example: 'Determine the robot type, city, time period, action, style, lighting, and mood.',
+    example: 'Consider the robot, city, era, activity, style, lighting, and mood.',
     color: 'accent',
   },
   {
     num: 3,
     title: 'Fantasy',
     desc: 'A castle in the sky.',
-    example: 'Decide how the castle floats, what surrounds it, who lives there, and what time of day it is.',
+    example: 'Consider its appearance, why it floats, surroundings, inhabitants, time of day, style, and mood.',
     color: 'amber',
   },
   {
     num: 4,
     title: 'Unusual / Impossible Scene',
     desc: 'A classroom underwater.',
-    example: 'Explain the underwater environment, survival technology, teacher action, outside view, lighting, and perspective.',
+    example: 'Consider the classroom, students, teacher, technology, outside view, lighting, and perspective.',
     color: 'cyan',
   },
   {
@@ -157,7 +157,7 @@ export function Section19() {
       <div className="relative overflow-hidden rounded-2xl border border-accent-500/30 bg-gradient-to-br from-accent-900/20 via-ink-850 to-ink-900 p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl bg-accent-600/20 border border-accent-500/30 flex items-center justify-center">
-            <Repeat className="w-5 h-5 text-accent-400" />
+            <span className="text-lg font-bold text-accent-300">#</span>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-accent-400">Take-Home Assignment</p>
@@ -165,17 +165,21 @@ export function Section19() {
           </div>
         </div>
 
-        <h3 className="text-2xl font-display font-bold text-white mb-4"># TAKE-HOME ASSIGNMENT</h3>
+        <p className="text-sm text-gray-300 leading-relaxed mb-4">
+          You will receive <strong className="text-white">five vague prompts</strong>. Your job is to
+          turn each idea into a clear, detailed image-generation prompt using what you learned about
+          <strong className="text-white"> GRACE</strong> and effective prompting.
+        </p>
 
-        <div className="space-y-5 text-sm text-gray-300 leading-relaxed">
-          <div>
-            <h4 className="text-lg font-display font-semibold text-white mb-2">## PROMPT → CREATE → IMPROVE</h4>
-            <p>You will receive <strong className="text-white">five vague prompts</strong>.</p>
-            <p className="mt-2">Your job is to turn each vague idea into a clear, detailed image-generation prompt using what you learned about <strong className="text-accent-300">GRACE</strong> and effective prompting.</p>
-          </div>
+        <p className="text-sm text-gray-400 leading-relaxed mb-5">
+          For every challenge, follow this process: <strong className="text-white">VAGUE PROMPT → YOUR PROMPT → GENERATE → EVALUATE → IMPROVE → GENERATE AGAIN</strong>
+        </p>
 
-          <p>For every challenge:</p>
-          <p className="font-semibold text-white">VAGUE PROMPT → YOUR PROMPT → GENERATE → EVALUATE → IMPROVE → GENERATE AGAIN</p>
+        <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
+          <p className="text-sm text-amber-300/90">
+            <strong>The first result does not have to be perfect.</strong> The goal is to learn how your
+            instructions affect what AI creates.
+          </p>
         </div>
       </div>
 
@@ -214,28 +218,36 @@ export function Section19() {
 
       {/* Submission template */}
       <div className="section-card">
-        <h3 className="text-lg font-display font-semibold text-white mb-2"># FOR EACH OF THE 5 CHALLENGES</h3>
-        <p className="text-sm text-gray-300 mb-5">
-          Complete all steps below for every challenge. The purpose is to show your{' '}
-          <strong className="text-white">iteration process</strong>, not just the final result.
+        <h3 className="text-lg font-display font-semibold text-white mb-2">For Each of the 5 Challenges, Complete All of the Following</h3>
+        <p className="text-sm text-gray-500 mb-5">
+          Use this template for every challenge. The purpose is to show your <strong className="text-white">full creative process</strong>, not just the final image.
         </p>
 
         <PipelineDiagram
           steps={[
             { label: 'Step 1 — Start with the vague prompt', description: 'Write down the original prompt' },
             { label: 'Step 2 — Build your prompt', description: 'Use GRACE and visual details' },
-            { label: 'Step 3 — Generate version 1', description: 'Use the AI image generator and save the image' },
-            { label: 'Step 4 — Evaluate your image', description: 'What worked, what was wrong, and what surprised you' },
+            { label: 'Step 3 — Generate version 1', description: 'Use your improved prompt' },
+            { label: 'Step 4 — Evaluate', description: 'What did the AI do well? What was missing?' },
             { label: 'Step 5 — Improve your prompt', description: 'Rewrite it based on what you observed' },
-            { label: 'Step 6 — Generate version 2', description: 'Generate and save the second image' },
+            { label: 'Step 6 — Generate version 2', description: 'Create the improved image' },
             { label: 'Step 7 — Compare', description: 'Explain what changed and which version is better' },
           ]}
         />
 
-        <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
-          <p className="text-sm text-amber-300/90">
-            <strong className="text-white">Submission checklist:</strong> original vague prompt, first GRACE-inspired prompt, version 1 image, evaluation, revised prompt, version 2 image, comparison, and short reflection.
-          </p>
+        <div className="mt-5 rounded-xl border border-accent-500/20 bg-ink-900/60 p-4">
+          <p className="text-sm font-semibold text-white mb-2">Submission checklist</p>
+          <ul className="text-sm text-gray-300 space-y-2">
+            <li>☐ Original vague prompt</li>
+            <li>☐ Your first GRACE-inspired prompt</li>
+            <li>☐ Version 1 image</li>
+            <li>☐ What the AI did well</li>
+            <li>☐ What could be improved</li>
+            <li>☐ Your revised prompt</li>
+            <li>☐ Version 2 image</li>
+            <li>☐ Comparison of Version 1 and Version 2</li>
+            <li>☐ Short reflection</li>
+          </ul>
         </div>
       </div>
 
@@ -317,16 +329,15 @@ export function Section19() {
           'Are you excited about the comic? What kind of story might you want to tell?',
         ]}
         explain={[
-          'The take-home assignment is about iteration, not just producing images. Michael must show the full process for each of the five challenges.',
-          'The first result does not need to be perfect. The goal is to observe how the prompt changes affect the generated image.',
+          'The take-home assignment is about iteration, not just producing images. Make sure Michael understands he needs to show the full process for each image.',
           'The sentence completion exercises help Michael articulate his mental shift from "AI does magic" to "I direct the AI."',
         ]}
         watchFor={[
           'Michael might rush through the reflection. Encourage honest, specific answers.',
-          'Michael might submit five images without showing the evaluation and revision process. Remind him: the process is what is being assessed.',
+          'Michael might try to submit three images without showing the iteration process. Remind him: the process is what is being evaluated.',
         ]}
         followUp={[
-          'Between now and next class, generate all five challenges and bring both versions of each image with the related prompts and comparisons.',
+          'Between now and next class, try generating images for your assignment. Bring your prompts and both versions of each image.',
         ]}
       />
     </div>
@@ -335,11 +346,13 @@ export function Section19() {
 
 function AssignmentWorkspace({ category }: { category: { num: number; title: string; desc: string; color: string } }) {
   const [data, setData] = useState({
-    firstIdea: '',
+    vaguePrompt: '',
     initialPrompt: '',
     aiDidWell: '',
     aiGotWrong: '',
     revisedPrompt: '',
+    comparison: '',
+    reflection: '',
   });
   const [v1Image, setV1Image] = useState('');
   const [v2Image, setV2Image] = useState('');
@@ -369,46 +382,60 @@ function AssignmentWorkspace({ category }: { category: { num: number; title: str
       <div className="space-y-3">
         <NotePad
           challengeKey={`takehome_${category.num}`}
-          label="First idea"
-          placeholder="What did you imagine?"
+          label="Step 1 — Original vague prompt"
+          placeholder="Write down the original prompt exactly as given..."
           rows={2}
-          onSave={(v) => { setData((p) => ({ ...p, firstIdea: v })); save('first_idea', v); }}
+          onSave={(v) => { setData((p) => ({ ...p, vaguePrompt: v })); save('vague_prompt', v); }}
         />
         <NotePad
           challengeKey={`takehome_${category.num}`}
-          label="GRACE-inspired prompt (version 1)"
-          placeholder="Goal: ... Role: ... Context: ... Details: ..."
+          label="Step 2 — Your first GRACE-inspired prompt"
+          placeholder="Goal: ... Role: ... Audience: ... Context: ... Examples / details: ..."
           rows={3}
           onSave={(v) => { setData((p) => ({ ...p, initialPrompt: v })); save('initial_prompt', v); }}
         />
         <ImageUploadField
-          label="Generated image (version 1)"
-          onImageSaved={setV1Image}
+          label="Step 3 — Version 1 image"
+          onImageSaved={(url) => { setV1Image(url); save('image_url', url); }}
         />
         <NotePad
           challengeKey={`takehome_${category.num}`}
-          label="One thing the AI did well"
-          placeholder="What worked?"
-          rows={1}
+          label="Step 4 — What the AI did well"
+          placeholder="What worked in the generated image?"
+          rows={2}
           onSave={(v) => { setData((p) => ({ ...p, aiDidWell: v })); save('ai_did_well', v); }}
         />
         <NotePad
           challengeKey={`takehome_${category.num}`}
-          label="One thing the AI got wrong or could improve"
-          placeholder="What did not match your idea?"
-          rows={1}
+          label="Step 4 — What could be improved"
+          placeholder="What did the AI misunderstand, leave out, or get wrong?"
+          rows={2}
           onSave={(v) => { setData((p) => ({ ...p, aiGotWrong: v })); save('ai_got_wrong', v); }}
         />
         <NotePad
           challengeKey={`takehome_${category.num}`}
-          label="Revised prompt (version 2)"
-          placeholder="Your improved prompt after evaluation..."
+          label="Step 5 — Your revised prompt"
+          placeholder="How will you improve the prompt based on what you observed?"
           rows={3}
           onSave={(v) => { setData((p) => ({ ...p, revisedPrompt: v })); save('revised_prompt', v); }}
         />
         <ImageUploadField
-          label="Improved image (version 2)"
-          onImageSaved={setV2Image}
+          label="Step 6 — Version 2 image"
+          onImageSaved={(url) => { setV2Image(url); save('improved_image_url', url); }}
+        />
+        <NotePad
+          challengeKey={`takehome_${category.num}`}
+          label="Step 7 — Compare Version 1 and Version 2"
+          placeholder="What changed? Which changes caused those differences? Which version better matches your original idea? Why?"
+          rows={3}
+          onSave={(v) => { setData((p) => ({ ...p, comparison: v })); save('comparison', v); }}
+        />
+        <NotePad
+          challengeKey={`takehome_${category.num}`}
+          label="Short reflection"
+          placeholder="What did you learn from this challenge?"
+          rows={2}
+          onSave={(v) => { setData((p) => ({ ...p, reflection: v })); save('reflection', v); }}
         />
       </div>
     </div>
