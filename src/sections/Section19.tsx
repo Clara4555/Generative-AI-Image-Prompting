@@ -31,24 +31,38 @@ const sentenceStarters = [
 const assignmentCategories = [
   {
     num: 1,
-    title: 'Realistic',
-    desc: 'A realistic animal, person, place, or object in an unusual environment.',
-    example: 'Example: A realistic tiger sitting in a modern library.',
+    title: 'Realistic Image',
+    desc: 'A dog at the beach.',
+    example: 'Include the dog, beach setting, action, time of day, mood, framing, and any clothing or accessories.',
     color: 'cyan',
   },
   {
     num: 2,
-    title: 'Fantasy / Science Fiction',
-    desc: 'Create something impossible or futuristic.',
-    example: 'Example: A floating city above a storm-covered ocean.',
+    title: 'Science Fiction',
+    desc: 'A robot in a city.',
+    example: 'Determine the robot type, city, time period, action, style, lighting, and mood.',
     color: 'accent',
   },
   {
     num: 3,
-    title: 'Completely Original',
-    desc: 'You choose the concept. Anything you can imagine.',
-    example: 'Example: Whatever inspires you — this is your idea.',
+    title: 'Fantasy',
+    desc: 'A castle in the sky.',
+    example: 'Decide how the castle floats, what surrounds it, who lives there, and what time of day it is.',
     color: 'amber',
+  },
+  {
+    num: 4,
+    title: 'Unusual / Impossible Scene',
+    desc: 'A classroom underwater.',
+    example: 'Explain the underwater environment, survival technology, teacher action, outside view, lighting, and perspective.',
+    color: 'cyan',
+  },
+  {
+    num: 5,
+    title: 'Your Own Creative Idea',
+    desc: 'Something strange is happening in a normal place.',
+    example: 'Choose a mysterious, funny, futuristic, realistic, magical, surprising, or dramatic scene.',
+    color: 'accent',
   },
 ];
 
@@ -147,23 +161,26 @@ export function Section19() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-accent-400">Take-Home Assignment</p>
-            <h2 className="text-xl font-display font-bold text-white">Prompt → Create → Improve</h2>
+            <h2 className="text-xl font-display font-bold text-white">PROMPT → CREATE → IMPROVE</h2>
           </div>
         </div>
-        <p className="text-sm text-gray-400 leading-relaxed mb-3">
-          Create <strong className="text-white">three</strong> different AI-generated images. They
-          should <strong className="text-white">not</strong> be comic images yet.
-        </p>
-        <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
-          <p className="text-sm text-amber-300/90">
-            <strong>The goal is NOT to make three nice pictures.</strong> The goal is to show that you
-            can communicate an idea, evaluate the AI's output, and improve your instructions.
-          </p>
+
+        <h3 className="text-2xl font-display font-bold text-white mb-4"># TAKE-HOME ASSIGNMENT</h3>
+
+        <div className="space-y-5 text-sm text-gray-300 leading-relaxed">
+          <div>
+            <h4 className="text-lg font-display font-semibold text-white mb-2">## PROMPT → CREATE → IMPROVE</h4>
+            <p>You will receive <strong className="text-white">five vague prompts</strong>.</p>
+            <p className="mt-2">Your job is to turn each vague idea into a clear, detailed image-generation prompt using what you learned about <strong className="text-accent-300">GRACE</strong> and effective prompting.</p>
+          </div>
+
+          <p>For every challenge:</p>
+          <p className="font-semibold text-white">VAGUE PROMPT → YOUR PROMPT → GENERATE → EVALUATE → IMPROVE → GENERATE AGAIN</p>
         </div>
       </div>
 
-      {/* Three assignment cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Five assignment cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
         {assignmentCategories.map((cat) => (
           <div
             key={cat.num}
@@ -197,28 +214,29 @@ export function Section19() {
 
       {/* Submission template */}
       <div className="section-card">
-        <h3 className="text-lg font-display font-semibold text-white mb-2">For Each Image, Submit</h3>
-        <p className="text-sm text-gray-500 mb-5">
-          Use this template for each of the three images. The purpose is to show your{' '}
+        <h3 className="text-lg font-display font-semibold text-white mb-2"># FOR EACH OF THE 5 CHALLENGES</h3>
+        <p className="text-sm text-gray-300 mb-5">
+          Complete all steps below for every challenge. The purpose is to show your{' '}
           <strong className="text-white">iteration process</strong>, not just the final result.
         </p>
 
         <PipelineDiagram
           steps={[
-            { label: 'First idea', description: 'What you imagined' },
-            { label: 'GRACE-inspired prompt', description: 'Your initial prompt' },
-            { label: 'Generated image (version 1)', description: 'Paste or upload', highlight: true },
-            { label: 'One thing the AI did well', description: 'What worked' },
-            { label: 'One thing to improve', description: 'What did not match' },
-            { label: 'Revised prompt', description: 'Your improved prompt' },
-            { label: 'Improved image (version 2)', description: 'The result after iteration', highlight: true },
+            { label: 'Step 1 — Start with the vague prompt', description: 'Write down the original prompt' },
+            { label: 'Step 2 — Build your prompt', description: 'Use GRACE and visual details' },
+            { label: 'Step 3 — Generate version 1', description: 'Use the AI image generator and save the image' },
+            { label: 'Step 4 — Evaluate your image', description: 'What worked, what was wrong, and what surprised you' },
+            { label: 'Step 5 — Improve your prompt', description: 'Rewrite it based on what you observed' },
+            { label: 'Step 6 — Generate version 2', description: 'Generate and save the second image' },
+            { label: 'Step 7 — Compare', description: 'Explain what changed and which version is better' },
           ]}
         />
 
-        <p className="text-sm text-gray-400 leading-relaxed mt-4">
-          You will submit all of this for each of the three images. Your tutor, Favour, will review
-          your process — not just your pictures.
-        </p>
+        <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
+          <p className="text-sm text-amber-300/90">
+            <strong className="text-white">Submission checklist:</strong> original vague prompt, first GRACE-inspired prompt, version 1 image, evaluation, revised prompt, version 2 image, comparison, and short reflection.
+          </p>
+        </div>
       </div>
 
       {/* Interactive submission workspace */}
@@ -299,15 +317,16 @@ export function Section19() {
           'Are you excited about the comic? What kind of story might you want to tell?',
         ]}
         explain={[
-          'The take-home assignment is about iteration, not just producing images. Make sure Michael understands he needs to show the full process for each image.',
+          'The take-home assignment is about iteration, not just producing images. Michael must show the full process for each of the five challenges.',
+          'The first result does not need to be perfect. The goal is to observe how the prompt changes affect the generated image.',
           'The sentence completion exercises help Michael articulate his mental shift from "AI does magic" to "I direct the AI."',
         ]}
         watchFor={[
           'Michael might rush through the reflection. Encourage honest, specific answers.',
-          'Michael might try to submit three images without showing the iteration process. Remind him: the process is what is being evaluated.',
+          'Michael might submit five images without showing the evaluation and revision process. Remind him: the process is what is being assessed.',
         ]}
         followUp={[
-          'Between now and next class, try generating images for your assignment. Bring your prompts and both versions of each image.',
+          'Between now and next class, generate all five challenges and bring both versions of each image with the related prompts and comparisons.',
         ]}
       />
     </div>
