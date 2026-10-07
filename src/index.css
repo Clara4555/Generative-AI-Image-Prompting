@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-950 text-gray-200 font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent-500/30 text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-ink-850/80 backdrop-blur-xl border border-white/5;
+  }
+  .glass-strong {
+    @apply bg-ink-800/90 backdrop-blur-xl border border-white/10;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-300 via-accent-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+  .section-card {
+    @apply glass rounded-2xl p-6 md:p-8;
+  }
+  .nav-dot {
+    @apply w-2 h-2 rounded-full transition-all duration-300;
+  }
+  .btn-primary {
+    @apply px-5 py-2.5 rounded-xl bg-accent-600 hover:bg-accent-500 text-white font-medium text-sm transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/25 active:scale-95;
+  }
+  .btn-ghost {
+    @apply px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-sm transition-all duration-200 active:scale-95;
+  }
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .divider-glow {
+    @apply h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #243056;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2f3d6b;
+}
